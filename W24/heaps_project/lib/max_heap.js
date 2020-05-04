@@ -28,25 +28,11 @@ class MaxHeap {
     
   }
 
-  //[null, 27, 30, 40, 20, 25, 16] given
-
-  //          27
-  //     30       40
-  //
-  //   20  25   16
+  insert(val) {
+    this.array.push(val);
+    this.siftUp(this.array.length - 1);
+  }
   
-  //[null, 40, 30, 27, 20, 25, 16] result
-
-  //          40
-  //     30       27
-  //
-  //   20  25   16
-
-  /*        40
-        30      27 // how do we know when we need a deeper level
-    20    25  16  // whats the leftmost of this level
-
-  */
 
   siftDown(idx) { 
     // idx = 1 , 3
