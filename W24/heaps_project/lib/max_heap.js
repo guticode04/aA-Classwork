@@ -33,6 +33,18 @@ class MaxHeap {
     this.siftUp(this.array.length - 1);
   }
   
+  deleteMax() {
+    // if there are only two items then the heap only has one item so return it
+    if(this.array.length === 2) return this.array.pop();
+    // if the heap has only one item it'll always be null
+    if(this.array.length === 1) return null;
+
+    
+    let max = this.array[1];
+    this.array[1] = this.array.pop();
+    this.siftDown(1);
+    return max;
+  }
 
   siftDown(idx) { 
     // idx = 1 , 3
