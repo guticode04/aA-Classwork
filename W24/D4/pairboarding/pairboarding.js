@@ -12,3 +12,32 @@ function subsets(arr) {
     return newArr;
   }));
 }
+// `subsets([1,2])` => [[],[1],[2],[1,2]]
+// `subsets([1,2,3])` => [[], [1], [2], [3], [1,2], [1,3], [2,3], [1,2,3]]
+arr1 = [1,2];
+arr2 = [1,2,3];
+
+console.log(subsets(arr1));
+console.log(subsets(arr2));
+
+function intersection(arr1, arr2) {
+  let intersect = [];
+  [arr1, arr2].forEach(arr => arr.sort((a, b) => a < b));
+
+  let current = arr1[0] < arr2[0] ? arr1 : arr2;
+
+  while (arr1.length !== 0 || arr2.length !== 0) {
+    let latest = current.shift(),
+      other = current === arr1 ? arr2 : arr1;
+
+
+    if (latest === other[0]) {
+      intersect.push(latest);
+      other.shift();
+    }
+
+    current = current === arr1 ? arr2 : arr1;
+  }
+
+  return intersect;
+}
